@@ -81,10 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const searchCriteria = {
-        states: [],
-        cities: [],
-        amenities: []
-    };
-    fetchPlaces(searchCriteria);
+    $('#my-button-id').click(function() {
+      const amenities = $('input[name="amenity"]:checked').map(function() {
+          return $(this).val()
+      }).get();
+
+      fetchPlacesByAmenities(amenities);
+    });
+
 });
